@@ -1,0 +1,13 @@
+*.pdf
+*.html
+*.RData
+*.Rhistory
+*.aux
+*.bbl
+*.log
+*.out
+*.tex
+paper.md
+*.blg
+*.spl
+paper/notes/
