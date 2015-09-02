@@ -1,5 +1,5 @@
 ---
-title: 'A database to facilitate a "middle-out" approach to urban metabolism'
+title: Model development
 journal: "TBC"
 author:
 - name: 'Tom Ravalde\corref{cor1}'
@@ -16,9 +16,9 @@ topline: (Draft.)
 options: "review, authoryear"
 date: \VCDateISO
 abstract:
-  "In view of urbanisation trends and associated climate change related challenges, it is increasingly important to use urban metabolism studies to support measures which enable more environmentally-friendly ways of sustaining the quality of life offered in towns and cities. Thus far, urban metabolism studies have quantified the resource flows into and out of cities to make helpful contributions to policy and planning. Further to this, 'bottom-up' modelling has shown how demand-side activity (e.e. in buildings) generates the demand for urban resources, and thus affects overall metaboic flows. However, the urban metabolism field could do more to study the networks of processes which supply the goods and services to meet demand. This would enable planners and policy makers seeking more environmentally benign ways to sustain urban living to go beyond demand-side management, and to identify optimal networks of processes to manage a city's resources. To facilitate this, we conduct a systematic search of academic literature to assemble a database of over 200 resource manamement processes. The database is written using the lightweight YAML syntax, which makes it straightforward for the academic community to improve and expand."
+  To be completed.
 
-keywords: "urban metabolism, sustainability, data, to be completed"
+keywords: "to, be, completed"
 ---
 
 ```{r Setup, include=FALSE, results="hide", warning=FALSE}
@@ -30,398 +30,84 @@ font_import(pattern="LinBiolinum")
 
 # Introduction 
 
-In 1965, the American engineer Abel Wolman introduced 'urban metabolism'. Writing in *Scientific American* he defined the metabolic requirements of a city as "all the materials and commodities needed to sustain the city's inhabitants at home, at work and at play." [@Wolman1965]. He recognised that resource consumption was necessary to sustain urban living, but was motivated to study urban metabolism because of his concerns that large material and energy inputs and outputs to and from cities were giving rise to "three metabolic problems" that were becoming "more acute as cities [had] grown larger", namely "adequate water supply, the effective disposal of sewage and the control of air pollution" [@Wolman1965, p.157].
-
-Since Wolman, urbanisation has continued apace, with more than 50% of the global population currently living in towns or cities, and predictions that this will exceed 70% by 2030 [@UnitedNations2014]. Metabolic problems have also grown in both magnitude and variety. In 1965 Wolman could claim that "many of the metabolic inputs such as food, fuel, clothing, durable goods, construction materials and electric energy present no special problem". But this no longer holds true: urban energy consumption is estimated to contribute up to 76% of global CO$_2$ emissions [@IPCC2013]; urban water consumption rates make water shortage a perennial reality for 150 million urban inhabitants [@McDonald2011]; and urban waste output levels are leading to water contamination, air pollution, greenhouse gas emissions and public health concerns [@Hoornweg2012]. As the environmental problems associated with urbanisation have increased, so urban metabolism has become "part of the strategic toolkit  for developing sustainable cities" [@NextCity2014, quoting Prof. Chris Kennedy].
-
-Specifically, urban metabolism studies could provide insight on how to maintain the socioeconomic benefits of urbanisation (highlighted by the @WorldBank2009 and others) while limiting environmental harm. Urban metabolism has been defined as the "sum total of the technical and socioeconomic processes that occur in cities, resulting in growth, production of energy and elimination of waste" [@Kennedy2007, p.44], and so studying it enables planners and policy makers to take stock of an area's resource consumption and output, ascertaining its long-term trends and comparing its metabolism with other areas. The outcomes of studies can then inform policy analysis and urban design [@Kennedy2011].
-
-Analysis can focus on the different 'parts' of an urban metabolic system, each of which work together as shown in Figure \ref{fig:metab}. At the 'bottom', homes, business, industry and transport exert demands for final energy and water consumption, as well as generating wastes. At the 'top' are both the natural resources required to meet final demand, and the wastes and effluents produced by the city as a whole. In the 'middle' is a network of processes which convert natural resources to final demands, as well as treating and managing locally generated wastes, thus linking the 'top' and the 'bottom'. Typically, urban metabolism studies seek to quantify the overall metabolic flows at the top, and to locate the origins of these flows at their point of demand at the bottom.
-
-In this paper we will present arguments that urban metabolism studies that focus on on the top and bottom of an urban system are useful, but that there should be more focus on the middle of the system, to show how the mix of processes used in the middle, to meet demand at the bottom will affect overall metabolic inputs and outputs at the top (Section 2). To support such approaches, we identify the resource conversion processes that can shape urban metabolism both now and in the future, and quantify the resource consumption and production of each individual process, assembling this information into a database (Section 3). We then discuss possible applications of the database (Section 4), before summarising our work and suggesting areas of further research (Section 5).
-
-\begin{figure}
-	\centering
-	\begin{spacing}{1.0}
-	\resizebox{\columnwidth}{!}{\input{metab.pdf_tex}}
-	\end{spacing}
-	\caption{Three components and study approaches to urban metabolism. [TODO: (1) Resolve Inkscape issue which deletes the mid-line resource nodes (circles) between the processes; (2) tidy object and text positioning.]}
-	\label{fig:metab}
-\end{figure}
-
-# Background
-
-Our background discussion has two elements: first, we justify thee need for our proposed database of processes, by reviewing current approaches to urban metabolism to highlight their merits and shortcomings; second, we introduce 'technology scanning' which comprises a variety of principles that can help us identify and describe the processes that could potentially constitute the middle of the urban resource system.
-
-## Approaches to urban metabolism
-
-### "Top-down"
-
-According to @Chrysoulakis2014, most urban metabolism studies take a top-down approach. Their aim is to "focus attention on system-wide impacts of the consumption of goods and the generation of wastes within the urban environment" [@Sahely2003, p.470]. Typically studies use "course or highly aggregated data ... often at the city or regional level, that provide a snapshot of resource or energy use, that cannot be correlated with specific locations, activities or people" (@Chrysoulakis2014, Chapter 19, p.209). Several methods are described in @Sahely2003. One example is Wolman's seminal study of a hypothetical city of one million people, which "used national usage rates of water, food and fuel as well as production rates of sewage, waste and air pollutants to derive per capita inflow and outflow rates" (p.470). A more sophisticated approach might adjust these values; for example, a city's food intake could be calculated from a national average value for food consumption which is adjusted according to the city's grocery bill expenditure. Ideally though, data would be supplied more directly: a city's water consumption data could be supplied by government departments (who have collected the information from regional water plants); similarly electricity consumption data is available from market operators, and waste data from municipal authorities [@Sahely2003]. Once collected, the data can be used to analyse trends and make inter-city comparisons, to reveal the effect of variables (such as urban form) on metabolism, and thus to inform policy responses. This is exemplified by @Liang2011 use government statistics in a "top-down approach for calculating domestic extraction and imports" (p.425) for Suzhou (China). Their findings lead to precise policy proposals to achieve decarbonization, in this case focussing CO$_2$ mitigation strategies on vehicle pollution (because trends indicate that the city is on course for low-carbon development in other sectors).
-
-### "Bottom-up"
-
-An alternative approach is to build up a picture of a city's metabolism from the 'bottom up', "based on quantitative estimates of urban metabolism components at local to regional scales" -- these local and regional flows are then "aggregated over a region" [@Chrysoulakis2009, p.470]. For example, @Kellett2013 describe a method to quantify a neighbourhood's CO$_2$ emissions by modelling the CO$_2$ "fluxes and storages in four *sectors*: buildings, transportation, humans (food and waste) and, vegetation and soils" (p.49, emphasis original). The emissions from each sector are evaluated by breaking them down into groups of objects (such as building or vehicle types) and quantifying the emissions for each object, and scaling up the emissions according to the total number of object types in the sector. For instance, to calculate the total neighbourhood emissions attributable to buildings, the emissions for a particular type of building (e.g. "Apartment" (p.52, Table 1)) are estimated according to "schedules, vintage, HVAC equipment, and occupancy loads" [@Kellett2013, based on @Parekh2005] (p.52). LiDAR data then provides the number of each type of building in the neighbourhood, thus building type emissions can be multiplied by building type prevalence to calculate total emissions from one building type.
-
-Bottom-up methods in general depend on a number of tools, including: sensor technology to measure energy, water, and pollutant fluxes; GIS and remote sensing devices to collect information on land-use, thermal radiance and rainfall; and advanced numerical modelling to simulate resource fluxes [@Chrysoulakis2009]. Another more 'low-tech' approach taken by the "Participatory Urban Metabolism Information Systems" (PUMIS) component of the Ecocitizen World Map Project[^ecocitizen], is to survey residents of a city about their resource use habits; for instance, asking residents about their typical dishwasher loads and shower durations to collect information on local water flows.
-
-[^ecocitizen]: \url{http://ecocitizenworldmap.org/understanding-your-city-by-understanding-its-flow-towards-participatory-urban-metabolism-information-systems/}
-
-### Merits, limitations, and a complementary approach
-
-Top-down approaches are methodologically simple, but they do not lead to "an understanding of the processes leading to emissions" [@Kellett2013] and by extension, other environmental impacts), and are thus "less suited for scenario-based projections"; hence the power of bottom-up methods, which can be used to test scenarios and policies. This can be seen in @Kellett2013 who model how four scenarios would reduce emissions with respect to the baseline, by altering land-use, building efficiency, transport fuels and consumer behaviour. However, they suffer from the problem that "small errors will propagate into large uncertainties" (p.57) when resource flows are aggregated over large areas or long time spans.
-
-Furthermore, and most relevant to this work, @Zhang2013 notes that both bottom-up and top-down approaches fail to consider the "mechanisms responsible for environmental and other impacts, and the internal mechanisms that determine how a system functions" (p.469) -- or as we have denoted it -- the *middle* of the system. The top-down approaches are well suited to identify the scale of metabolic problems, and the bottom-up approaches will contribute understanding on the ultimate causes of problematic flows, but appreciation of the middle will add to the insights of bottom-up studies by revealing the role of the process mix in an area's metabolism. Thus "a major research priority has been to ... quantitatively analyze metabolic aspects such as production, consumption, and circulation within and among the components of an urban ecosystem." (p.467). This should include an understanding of the "processes that define the flows among the system's structural compartments, and the quantity of each flow" (p.468). Zhang suggests that networks can be optimised by identifying and regulating "key nodes and important processes, as well as the paths between these nodes and the fluxes in each process". This would enable researchers to "predict the effects of changes in the flow distribution among nodes of the network" under different scenarios (p.469).
-
-In summary, incorporating these 'endogenous mechanisms' into the scope of an urban metabolism study, can suggest how a city's mix of processes could meet resource demand in cheaper and greener ways, beyond changing demand patterns at the bottom (or 'demand-side management'). Consider a city's fuel requirements due to domestic heating as a case in point: bottom-up studies could test demand-side management measures such as thermal insulation and lower thermostat settings, but studying the middle could test how heating demand could be met by waste heat from a power generation instead of boilers, and thus reduce a city's overall fuel consumption. Since this approach quantifies how the network in the middle transfers resources from the point of demand at the bottom, to makeup the overall metabolic flows at the top, we call this type of analysis "middle-out".
-
-## Technology scanning
-
-In an effort to encourage middle-out approaches, we will compile a database of numerous processes that represent the 'endogenous mechanisms' that cities use to manage their energy, water and waste. To do this, we will adopt ideas from 'technology scanning'. Technology scanning can be defined as "a way of taking a creative look at the world of technological developments and the cultural, regulatory, and business environments in which they emerge." [@Edgetech]. In general, it is used in industry and business with the aim of either "keeping abreast" of current technologies, or "looking ahead" to identify emerging technologies [@VanWyk1997, p.24], in order to "strengthen the link between technology and corporate strategy" (p.21). The specific aims and methods vary on a case-by-case basis, making the concept "somewhat esoteric" (p.26) and thus the volume of literature is small.
-
-As an example, in healthcare, researchers might be looking to "create an inventory of target technologies that have the highest potential for impact on clinical care, the health care system, patient outcomes, and costs" [@AHRQ [<< TODO: Resolve Mendeley issue which won't allow 'n.d.' in the Year field]] through searching literature, databases and digital libraries, as well as consulting industrial experts. In another case study from the railroad industry, technology scanning was used to identify technologies which "may allow cost savings or service improvements", to "provide incremental or revolutionary benefits" by sifting through the "myriad possibilities". The results enabled a rail company to "formulate a coherent strategy for research and for investment" [@Martland2002, p.2]. Martland et al's method involved first a "general search" to identify technologies, and second "technology mapping" (p.3) which investigates the performance and cost of each technology, and goes on to classify technologies according to maturity, functionality and other variables. This proved to be "a valuable exercise" as it uncovered "some technologies which had not been previously mentioned explicitly in some of the world's railroad technology resource program documentation and technology strategies" (p.14) -- namely, nanotechnology.
-
-## Summary
-
-Building on the foundation of the oft-stated predictions about urbanisation trends and urban environmental impacts set out in the Introduction, we have agreed with other authors that concern for the planet coupled with a desire for human well-being makes urban metabolism an important area of study. We have therefore proposed middle-out approaches to urban metabolism which can be used to compliment top-down and bottom-up approaches, by studying the network of resource management processes, and resource fluxes through it. These processes connect the final consumers at the bottom to the overall metabolic inputs and outputs at the top, and hence go beyond demand-side management to support sustainability goals. To assist this approach, we have introduced technology scanning, which can be used to gather information about the processes in the middle of the system.
-
-# Building a database of resource conversion processes
-
-Our technology scanning, which here we will call 'process scanning'[^process-scanning], will identify and gather information on as many processes as feasibly possible which could play a part in the middle of the urban metabolism system. The scanning has two stages: first in the "general search" stage, we systematically search academic literature to identify the processes; and second in the "technology mapping" stage, we collect data on each process we have identified, which we will assemble into the database.
-
-[^process-scanning]: The terminology of 'process scanning' rather than 'technology scanning', is better suited to the larger-scale activities (which may indeed involve more than one technology) that provide energy, water and waste management services in cities (such as a wastewater treatment plant).
-
-## Systematic literature search
-
-
-Our systematic literature search uses online search engines, together with the Bash and R programming languages to identify the processes from the vast repository of literature available online. It is possible that our method might miss some relevant processes, but we minimise that risk by searching through such a large volume of content. The search followed the four step procedure below. Some decisions may seem somewhat arbitrary (e.g. the removal of lower impact factor material in steps 2 and 4), but were taken to reduce the literature to a manageable volume, focussed on the highest quality research.
-
-1. *Assemble the titles of relevant journals.* We downloaded the titles of all the journals listed with the Thomson Reuters Master Journal List[^WebOfScienceURL] (at the time of download there were 17616 journals). To reduce this to relevant journals, we first carried out an automated search which removed journals that did not match any words from a specified list keywords[^keywordsJournals]. We subsequently reduced this to 379 journal titles with a manual search to remove the rest of the irrelevant content.
-2. *Filter journals by impact.* First we removed any journals with impact factors less than 0.5. From the remaining journals, we retained the top 80% of the 'impact' by ranking the journals from highest to lowest according to their impact factor, and calculating a cumulative sum of their impact factors, and then removing all journals in the bottom 20%.
-3. *Find relevant journal articles.* Using the Web of Science search facility, we searched our list of journals for articles containing specified combinations of keywords[^keywordsArticles] which indicate they could include content related to urban resource management processes. This found 9929 paper titles which we reduced to 7681 titles through a manual search.
-4. *Article categorisation and further filtering by impact.* We then searched the article titles for keywords that enabled us to organise the articles into categories representing either a process or a resource. Each category was then divided into sub-categories. For example, the `effluent` category (a resource) contained sub-categories on `agriculture`, `fermentation`, `hydrogen` and `wastewater` amongst others. Each sub-category is therefore a list of journal articles whose titles contain both the word 'effluent' and the sub-category heading. This resulted in 65 main categories with a combined total of 955 sub-categories. Finally, we removed the lowest impact categories by calculating each category's mean article impact factor, then ranking the categories from highest to lowest mean impact, and removing categories in the bottom 33% of mean impact.
-
-[^WebOfScienceURL]: \url{http://science.thomsonreuters.com/cgi-bin/jrnlst/jlresults.cgi?PC=MASTER}
-
-[^keywordsJournals]: The keywords are: `CITY or CIVIL or CLIMATE or CONVERSION or DECISION or DEVELOPING or ELECTRICITY or ENERGY or ENGINEERING or ENVIRONMENT or ENVIRONMENTAL or GAS or HOUSE or HOUSEHOLD or INFRASTRUCTURE or MATERIAL or MATERIALS or NATURE or RENEWABLE or SANITATION or SCIENCE or SMART or SUSTAINABILITY or SUSTAINABLE or SYSTEM or SYSTEMS or TECHNOLOGY or URBAN or WASTE or WASTEWATER or WATER or WIND`
-
-[^keywordsArticles]: These are: `
-(INFRASTRUCTURE or PROCESS or STORAGE or TECHNOLOGY) and (ELECTRICITY or GAS or ENERGY or POWER or WASTE or WASTEWATER or WATER) not (ABSORPTION or or ACCOUNTING or AHINA or AIRCRAFT or ANODE or ASIA or ATLANTIC or CATALYST or CATALYTIC or CATCHMENT or CATHODE or CAVERN or CENTRIFUGATION or CHARACTERIZATION or CHARACTERIZE or CONCEPTUAL or CORRELATION or CRYSTAL or CRYSTALLINE or CRYSTALLIZATION or CRYSTALLOGRAPHY or DECISION SUPPORT or DECISION TREE or DEHALOGENATION or ECONOMIC or ECONOMY or ELASTICITY or ENZYME or GAME or GAUSSIAN PROCESSES or HEAVY METAL or HEURISTIC or HYDRAZINES or HYDROLOGICAL or HYDROLOGY or LAKE or LIBERALISATION or (LIFE and CYCLE) or LIGNIN or MARKET or MARKOV or MICROSCOPY or MINERALIZATION or MIXED INTEGER LINEAR PROGRAMMING or NEWTON or NONLINEAR PROGRAMMING or OCEAN or (OILY and WASTEWATER) or (OPTIMAL and TECHNOLOGY) or OPTIMIZATION or PHOSPHATE or PHOSPHORUS or POLITICAL or POLITICS or POVERTY or PROTEIN or REFORM or (RIVER or BASIN) or SAFE or SAFETY or SELENITE or SOIL or SWINE or TEXAS or THEORETICAL or THEORY or VANADIUM or GAUSS-NEWTON or GENETIC ALGORITHM or PH)`
-
-## Data collection and database construction
-
-The resource and processes categories provided a starting point to the search. We went through each sub-category, searching the listed articles for mentions of processes which managed energy, water or waste. Having identified any such process, we then researched it to find the quantitative and qualitative information for the database, outlined below.
-
-The information for each process was recorded in YAML[^YAML] format, whose hierarchical structure enables content to be 'nested' like sub-points and sub-sub points (and so on) in a bullet-point list. Thus multiple layers of information can be attributed to any item. Moreover, YAML uses very lightweight syntax and is therefore human-readable in comparison other similarly structured data storage formats (such as JSON and XML). Furthermore, YAML data can easily be converted into other formats[^R-YAML].
-
-[^YAML]: 'YAML Ain't Markup Language': \url{yaml.org}
-[^R-YAML]: For example, in R, using the `yaml` package: \url{https://cran.r-project.org/web/packages/yaml/index.html}
-
-
-\begin{description}
-\item[\texttt{process}] identifies the process name. For some processes, there exist a few variants, with different \texttt{capacity} values (see below); thus processes are distinguished from one another by having both their name (e.g. \texttt{anaerobic-digestion-wastewater}) and their capacity (e.g. \texttt{556.6}).
-\item[\texttt{flow}] contains a list of the quantities of energy, water and waste consumed and produced by the process. Data on resource flow quantities is found by searching the literature for process descriptions, inventories and mass and energy balances. Each flow has a further sub-list comprising three items: the numerical quantity of the flow (which is negative for an input and positive for an output), the units (MW for energy quantities, and kg/s for everything else), and a reference to the information source.
-\item[\texttt{trl}] defines the  `technology readiness level' (TRL) which is used to ``assess the maturity level of a particular technology" \citep{Mai2015}, from the initial stages of scientific research to its implementation in the real world. TRLs were initally developed by NASA as a nine-point scale, but other organisations such as the U.S. Department of Defense use different scales \citep{Mankins2009}. We have defined our own simplified TRL definitions which define a technology as `current' or `rare' for existing technologies, and `mid-term', or `long-term' for technologies still at the research and development stage. This item is made up of a list of two sub-items which specify the TRL and the reference to the information source.
-\item[\texttt{main}] specifies which resource is considered the `main' input or output. For a powerplant, this would be the electricity output; for a wastewater treatment plant, this would be the wastewater input. All the resource flow quantities are normalised with respect to this value, such that it equals $\pm 1$.
-\item[\texttt{capacity}] specifies the maximum rate at which the process can consume or produce the main resource. For example, for a 350 MW powerplant, capacity would take a value of 350. Due to the normalisation of the flows with respect to the main resource, any process's resource flow multiplied by its capacity will provide the maximum rate of consumption or production of any resource for the process. This item lists both a value and a reference.
-\end{description}
-
-An example database record is given in Figure \ref{fig:yaml}.
-
-\begin{figure}
-\lstinputlisting[language=yaml]{powerplant-paper-edit.yaml}
-\caption{An example YAML record for a coal-fuelled powerplant.}
-\label{fig:yaml}
-\end{figure}
-
-# Database overview and possible applications
-
-```{r database-analysis}
-library(ggplot2)
-library(dplyr)
-
-# Import and shape data so we can obtain summary statistics
-
-processes <- read.csv("../yaml/normalised/processes-analysis.csv")
-
-## Specifiy whether flows are inputs or outputs
-processes$sign <- "Input"
-processes[processes$value>0, ]$sign <- "Output"
-
-## Add 'mainOutput' column
-
-### Build mainOutput lookup table
-lookup <- filter(processes, value==1)
-lookup <- select(lookup, c(process, resource))
-
-### Use keyFlows.lookup to add 'mainOutput' column to proc.keyFlows
-processes <- inner_join(processes, lookup, by="process")
-colnames(processes)[colnames(processes)=="resource.x"] <- "resource"
-colnames(processes)[colnames(processes)=="resource.y"] <- "mainOutput"
-
-processes <- processes[,c("process",
-			 "process.name", 
-			 "capacity", 
-			 "TRL", 
-			 "resource",
-			 "unit",
-			 "value",
-			 "sign",
-			 "mainOutput")]
-processes <- unique(processes) # TODO: fudge required, due to the duplication of each row when using inner_join (not sure why), so try and fix this.
-
-```
-
-Our database currently contains `r length(unique(processes$process))` unique processes (or `r length(unique(processes$process.name))` when the different capacities are counted). These processes all manage energy, water and waste, encompassing `r length(unique(processes$resource))` resource types, of which 25 are 'main' resources. Processes where energy resources are the main output include fossil fuel- and renewable-based generation technologies (such as powerplants and concentrating solar power), as well as methods to produce biofuels and hydrogen. Where water resources are the main output, processes include the delievery and treatment of groundwater and surface water for potable and nonpotable purposes. The waste management processes include treatment and energy extraction methods for many waste types including wastewaters, agricultural wastes, municipal solid waste and landfill leachate. Of the `r length(unique(processes$process))` unique processes, `r length(unique(filter(processes, TRL %in% c("c", "r"))$process))` are 'current', although `r length(unique(filter(processes, TRL=="r")$process))` have been identified as having low levels of market penetration ('rare'). The remaining `r length(unique(filter(processes, !TRL %in% c("c", "r"))$process))` are still in the research and development stage.
-
-In Section 2, we argued that a middle-out perspective on urban metabolism would offer insight on how changing a system's mix of processes could meet demand for energy, water and waste management, but with more benign impacts. To appreciate how our database could help realise this, we first consider how demand for individual resources is met, using the subset of processes whose main output is methane as a case study. Figure \ref{fig:heatmap_CH4} visualises the resource inputs and outputs for six processes to produce 1 kg of methane. At a glance, it is evident from the lightest shaded tiles which methane production methods have the smallest of the various inputs and outputs, and thus which method is most desirable under certain circumstances. For example, a city which uses the very water-reliant 'Biogas upgrading -- AWR' method may like to consider lower water alternatives. Alternatively, another city may have a ready supply of biomass (perhaps from agricultural waste), which would otherwise go to waste, but could instead feed the gasification process. This latter example is one of the 'medium-term' processes, and therefore would require research and investment if it was to be implemented.
-
-The methane production example demonstrates the resource transfers possible between the energy, water, waste and other sectors. The production of methane (an energy resource) is linked to various degrees to the energy sector (through electricity or heat requirements), the water sector (through nonpotable water inputs) and the waste sector (through vegetable waste inputs and digestate outputs). Links like these are ample within our database, and are summarised in Figure \ref{fig:heatmap_interactions}. These inter-sectoral links are important because they show how collaboration between different firms and service providers could improve an area's metabolism, by using the wastes and by-products of one process as inputs to another (advocated by many including @Meijer2011 and @Leduc2013), thereby reducing a city's overall resource consumption and waste.
-
-Considering these links across the whole network of processes which could constitute the system's middle for any particular urban area, it is evident that making environmentally beneficial decisions which take advantage of the inter-sectoral links is impossible 'at a glance'. When multiple locations in a city are demanding water, heating and electricity as well as generating waste and wastewater, then middle-out perspectives should take advantage of computational power. We noted in Section 2.2 that @Zhang2013 suggested that optimisation could be adopted. One way to carry this out is to use our database in the optimisation model used in @Ravalde2015. In this, the processes and resource flows are represented as equations, and the user specifies the resource demands and waste generation rates at different locations. Solving the equations identifies the mix of technologies which meets demand, at a minimum financial cost. Though there is no reason to limit modelling to economic considerations: other objectives could be to minimise a city's water consumption (in water stressed areas, such as Singapore [@Luo2015]), carbon footprint (to help meet emissions targets, such as those set by the EU [@Guardian2014]), or waste generation rates (where landfill space is running out, such as Greece [@Xydis2012]. If users add more information to the database, then system objectives could extend further, for example incorporating emergy and exergy analysis -- other methods which quantify the resource consumption of a system [@Sciubba2005].
-
-The results of optimisation modelling can be used to inform 'middle-focussed' planning and policy agendas. For example, by testing whether 'decentralised' systems (which use more smaller capacity processes, close to the point of resource use or generation) use resources more efficiently than centralised systems. Results of modelling will also highlight which inter-sectoral synergies might be most beneficial, and thus reveal where different service providers should work together. Modelling should also show how the middle of the system should change in response to changes at the bottom, as scenarios where behavioural changes and efficiency measures adjust resource demands may yield a different optimal network or processes.
-
-Modelling with our data can also inform the research and investment agendas: by including the processes with medium-term and long-term TRLs, analysis can reveal which as yet unimplemented technologies will most benefit the network as a whole, and thus warrant further research and funding.
-
-```{r energy-heatmap, fig.height=4, fig.cap="Heat map showing the resource consumption and production for different methane producing technologies producing 1kg of methane. Key: \\textsf{c} = current technologies, \\textsf{r} = rare technologies, \\textsf{m} = medium-term technologies; \\textsf{AWR} = alkaline with regeneration, \\textsf{BABIU} = bottom ash upgrading, \\textsf{HPWS} = high pressure water scrubbing. \\label{fig:heatmap_CH4}"}
-
-## Extract subset of processes which produce methane as a main output
-processes_CH4 <- filter(processes,
-			mainOutput=="methane",
-			capacity %in% c(0.24, 0.0001319, 0.122))
-
-## Add more reader-friendly process and resource names for the plot
-plot_names_processes <- read.csv("../yaml/normalised/plot_names_processes.csv")
-plot_names_resources <- read.csv("../yaml/normalised/plot_names_resources.csv")
-
-processes_CH4 <- inner_join(processes_CH4, plot_names_processes, by="process")
-processes_CH4 <- inner_join(processes_CH4, plot_names_resources, by="resource")
-
-## Plot methane production processes as a heat map
-
-#en_map <- ggplot(processes_en, aes(resource, process)) +
-#en_map <- ggplot(processes_bf, aes(resource, process)) +
-#en_map <- ggplot(processes_elec, aes(resource, process)) +
-#en_map <- ggplot(processes_H2, aes(resource, process)) +
-#en_map <- ggplot(processes_wat, aes(resource, process.name)) +
-#en_map <- ggplot(processes_elec, aes(resource, process.name)) +
-en_map <- ggplot(processes_CH4, aes(plot_name.x, plot_name.y)) +
-  theme_bw() +
-  geom_tile(aes(fill="red", alpha=abs(value))) +
-  theme(axis.text = element_text(size=8),
-	axis.text.x = element_text(angle=45, hjust=1)) +
-  guides(fill = FALSE) +
-  xlab("Process") + 
-  ylab("Resource (units)") +
-  labs(alpha="Quantity") +
-  facet_grid(sign ~ TRL, scale="free", space="free")
-en_map
-```
-
-```{r interaction-heatmap, fig.height=3, fig.cap="Heat map displaying the number of interactions between the energy, water, waste and other sectors in processes from our database. [TODO: Adjust plot size]\\label{fig:heatmap_interactions}"}
-
-## Define energy, water and waste resource (Note: "consumption" is missing from the list)
-
-energy <- c("elec",
-	"biodiesel",
-	"heat",
-	"methane",
-	"ethanol",
-	"hydrogen",
-	"biooil",
-	"methanol",
-	"cooling",
-	"heatCooking",
-	"biogas",
-	"butanol",
-	"DME",
-	"gasNatural",
-	"oil",
-	"gasoline",
-	"LPG",
-	"liquidFuel",
-	"propane",
-	"syngas",
-	"fuelOil",
-	"coal",
-	"solar",
-	"diesel",
-	"wind",
-	"fuel",
-	"coke",
-	"uranium")
-
-water <- c("water",
-	 "waterNonPotable",
-	 "seawater",
-	 "waterBrackish",
-	 "waterHot",
-	 "groundWater",
-	 "groundWaterPumped",
-	 "waterPotable",
-	 "surfaceWater",
-	 "waterIrrigation")
-
-waste <- c("wastewater",
-	   "effluent",
-	   "waste",
-	   "oilUsed",
-	   "foodWaste",
-	   "digestate",
-	   "ash",
-	   "vegWaste",
-	   "slag",
-	   "gasLandfill",
-	   "gasWaste",
-	   "sludge",
-	   "biomassAgriWaste",
-	   "leachate",
-	   "MSW",
-	   "nuclearFuelSpent",
-	   "manure")
-
-other <- c("algae",
-	   "CO2",
-	   "biomass",
-	   "wood",
-	   "metal",
-	   "algaeDry",
-	   "fertilizer")
-
-
-# FUNCTION to establish if energy/water/waste/other input/output flows exist (recording with 1s and 0s)
-flow <- function(resource, direction){
-
-  PROCESS <- filter(processes, process.name==process_name)
-  if(direction=="in"){
-    TF <- PROCESS$resource %in% resource & PROCESS$value<0
-  }
-  else {
-    TF <- PROCESS$resource %in% resource & PROCESS$value>0}
-  flow_direction <- "TRUE" %in% TF
-  return(flow_direction)
-}
-
-# Initialise vectors to store function output for each sector
-
-process_names <- as.character(unique(processes$process.name))
-N <- length(process_names)
-process_en_in <- vector()
-process_en_in <- c(process_en_in, N)
-process_en_out <- c(process_en_in, N)
-process_wat_in <- c(process_en_in, N)
-process_wat_out <- c(process_en_in, N)
-process_wst_in <- c(process_en_in, N)
-process_wst_out <- c(process_en_in, N)
-process_oth_in <- c(process_en_in, N)
-process_oth_out <- c(process_en_in, N)
-
-# Apply function to all sectoral inputs and outputs
-
-for(i in 1:N){
-  process_name <- process_names[i]
-  process_en_in[i] <- flow(energy, "in")
-  process_en_out[i] <- flow(energy, "out")
-  process_wat_in[i] <- flow(water, "in")
-  process_wat_out[i] <- flow(water, "out")
-  process_wst_in[i] <- flow(waste, "in")
-  process_wst_out[i] <- flow(waste, "out")
-  process_oth_in[i] <- flow(other, "in")
-  process_oth_out[i] <- flow(other, "out")
-}
-
-# Combine sectoral interaction information in dataframe
-
-interactions <- data.frame(process_names,
-			   process_en_in,
-			   process_en_out,
-			   process_wat_in,
-			   process_wat_out,
-			   process_wst_in,
-			   process_wst_out,
-			   process_oth_in,
-			   process_oth_out)
-
-# Count the number of each input-output interactions
-
-en_en <- nrow(filter(interactions, process_en_in==1 & process_en_out==1))
-en_wat <- nrow(filter(interactions, process_en_in==1 & process_wat_out==1))
-en_wst <- nrow(filter(interactions, process_en_in==1 & process_wst_out==1))
-en_oth <- nrow(filter(interactions, process_en_in==1 & process_oth_out==1))
-
-wat_en <- nrow(filter(interactions, process_wat_in==1 & process_en_out==1))
-wat_wat <- nrow(filter(interactions, process_wat_in==1 & process_wat_out==1))
-wat_wst <- nrow(filter(interactions, process_wat_in==1 & process_wst_out==1))
-wat_oth <- nrow(filter(interactions, process_wat_in==1 & process_oth_out==1))
-
-wst_en <- nrow(filter(interactions, process_wst_in==1 & process_en_out==1))
-wst_wat <- nrow(filter(interactions, process_wst_in==1 & process_wat_out==1))
-wst_wst <- nrow(filter(interactions, process_wst_in==1 & process_wst_out==1))
-wst_oth <- nrow(filter(interactions, process_wst_in==1 & process_oth_out==1))
-
-oth_en <- nrow(filter(interactions, process_oth_in==1 & process_en_out==1))
-oth_wat <- nrow(filter(interactions, process_oth_in==1 & process_wat_out==1))
-oth_wst <- nrow(filter(interactions, process_oth_in==1 & process_wst_out==1))
-oth_oth <- nrow(filter(interactions, process_oth_in==1 & process_oth_out==1))
-
-# Setup dataframe to store results of 16 sectoral input-output interactions
-
-inputs <- c("energy", "energy", "energy", "energy",
-	    "water", "water", "water", "water", 
-	    "waste", "waste", "waste", "waste",
-	    "other", "other", "other", "other")
-
-outputs <- c("energy", "water", "waste", "other",
-	    "energy", "water", "waste", "other",
-	    "energy", "water", "waste", "other",
-	    "energy", "water", "waste", "other")
-
-value <- c(en_en, en_wat, en_wst, en_oth,
-	    wat_en, wat_wat, wat_wst, wat_oth,
-	    wst_en, wst_wat, wst_wst, wst_oth,
-	    oth_en, oth_wat, oth_wst, oth_oth)
-
-interactions_sum <- data.frame(inputs, outputs, value)
-
-# Plot interactions as a heat map
-
-interaction_map <- ggplot(interactions_sum, aes(inputs, outputs)) +
-  theme_bw() +
-  geom_tile(aes(fill="red", alpha=value)) +
-  theme(axis.text = element_text(size=8)) +
-  guides(fill = FALSE) +
-  xlab("Inputs") + 
-  ylab("Outputs") +
-  labs(alpha="Process interactions")
-interaction_map
-
-#############################################
-
-## Draft version of sectoral interaction code
-
-#for(i in 1:N){
-#
-#  PROCESS <- filter(processes, process.name==process_names[i])
-#  TF <- PROCESS$resource %in% energy & PROCESS$value<0
-#  process_en_in[i] <- "TRUE" %in% TF
-#
-#}
-#############################################
-```
-
-# Summary and further work
-
-Both urbanisation trends and problems associated with urban resource consumption make urban metabolism an important field of study. Top-down and bottom-up approaches to urban metabolism offer important insights on a city's overall resource consumption and waste generation, and how this depends on the consumption and waste of homes, business, industry and transport. However, there is greater opportunity to study the processes that make up the networks of processes which convert resources into goods and services, and thus play a key role in shaping an area's overall metabolism -- i.e. to study the 'middle' of the system. To this end, we built a database comprising over 200 processes, which provide energy and water, and dispose of and/or treat waste and wastewater; both currently operational and those still at various stages of research. Storing the data in YAML format means it can be easily used by researchers and decision makers. Furthermore, others can easily contribute edits and additions to the database, so that the data is as accurate and as comprehensive as the contributing expertise allows. Applications of the database include using it to compare and contrast different methods of managing any particular resource; highlighting synergetic interactions between the energy, water, waste and other sectors, which can reduce overall consumption and waste; and using optimisation modelling to identify optimal systems under different scenarios to inform policy and to identify processes with promising research and investment opportunities.
-
-For the database to meet its potential, it should not remain static. Through our systematic literature search we have only just begun its construction. The technology scanning process (Section 2.2) can involve both literature searches and direct consultation with experts. We have done the former, but we anticipate to do the latter, so that the database will be refined and expanded. By making our database open source, anyone can correct or add to the data. We hope that the academic community will not only use the database in its current form, but will contribute in the following ways:
-
-1. Adding processes (existing or proposed).
-2. Broadening the type of information each process records, to include process costs (for capital, operation and maintenance), and other pollutants (such as SO$_2$), and other data.
-3. Extending the database beyond energy, water and waste management processes, to consider other processes which affect the metabolism of an area, such as steel and concrete manufacturing.
-
-In summary, we envisage that our database will become a continually improving and expanding source of information to enable the industrial ecology community and beyond, to carry out middle-out urban metabolism assessments, thereby helping the world's cities meet their inhabitants' needs more sustainability, in view of the challenges presented by urbanisation and climate change.
-
+- Concerned with the model formulation and validation
+
+# Benchmarking
+
+- Benchmarking model of default probabilities of listed companies
+  	- http://papers.ssrn.com/sol3/papers.cfm?abstract_id=982984
+- Benchmarking default prediction models: pitfalls and remedies in model validation
+	- http://www.rogermstein.com/wp-content/uploads/BenchmarkingDefaultPredictionModels_TR030124.pdf	
+
+## "Benchmarking problems"
+
+- Evolutionary computation benchmark problems
+  	- http://www.cs.cmu.edu/afs/cs/project/jair/pub/volume24/ortizboyer05a-html/node6.html
+- A generalized appraoch to construct benchmark problems for dynamic optimization:
+  	- http://www.cs.le.ac.uk/people/sy11/Papers/SEAL08_3.pdf
+- A benchmark study of optimization search algorithms
+  	- http://www.redcedartech.com/pdfs/SHERPA_Benchmark_0110.pdf
+- Collins definition:
+  	- http://dictionary.reverso.net/english-cobuild/benchmark%20problem
+- A library of problems:
+  	- http://iftomm-multibody.org/benchmark/browse/ 
+	- Example problems: flyball governor, uncontrolled bicycle, dynamic gait analysis, 
+- PROBEN1 -- A set of neural network benchmark problems and benchmarking rules
+- Popular benchmark problems for geometric nonlinear analysis of shells:
+  	- http://www.sciencedirect.com/science/article/pii/S0168874X0300218X
+- Some benchmark problems in electromagnetics
+  	- http://www.numa.uni-linz.ac.at/Teaching/Bachelor/oberndorfer-bakk.pdf
+	- "The purpose of a benchmark is to assess the relative performance of an object."
+- Benchmark problems for incompressible fluid flows with structural interactions
+  	- http://web.mit.edu/kjb/www/Principal_Publications/Benchmark_Problems_for_Incompressible_Fluid_Flows_with_Structural_Interactions.pdf
+- BioPreDyn-bench: a suite of benchmark problems for dynamic modelling in systems biology
+  	- http://www.ncbi.nlm.nih.gov/pubmed/25880925
+- Robust control design for a benchmark problem
+  	- http://deepblue.lib.umich.edu/bitstream/handle/2027.42/76996/aiaa-20949-475.pdf?sequence=1
+- Benchmark problems from vehicle dynamics
+  	- http://link.springer.com/article/10.1007/s12206-015-0504-4#page-1
+- Discrete location problems: benchmark library
+  	- http://www.math.nsc.ru/AP/benchmarks/english.html
+	- E.g. simple plant location problem
+- Benchmark structural control problem for seismically excited highway bridge
+  	- http://www-ce.engr.ccny.cuny.edu/People/Agrawal/Highway%20Benchmark%20Problem.htm
+- Two-objective design of benchmark problems of a water distribution system via MOEs: Towards the best-known approximation of the true pareto front
+  	- http://ascelibrary.org/doi/abs/10.1061/(ASCE)WR.1943-5452.0000460
+- Non-symmetric benchmark problem:
+  	- http://ta.twi.tudelft.nl/nw/users/vuik/software/laplace/problem.pdf
+  	- Navier-Stokes
+- Energy storage benchmark problems
+  	- http://castlelab.princeton.edu/Datasets/Time-dependent_storage/readme.pdf
+- A comparison of approximate dynamic programming tecnhiques on benchmark energy: does anything work?
+  	- http://castlelab.princeton.edu/Papers/Jiang-ComparisonADPonBenchmarkEnergy-DoesAnythingWorkJune52014.pdf
+- Optimization benchmark problem for energy plant operational planning problem
+  	- http://www.ssl.nd.chiba-u.jp/~okamoto/BP-IA/en/P1.html
+- Waste collection vehicle routing problem with time windows:
+  	- http://www.sciencedirect.com/science/article/pii/S0305054805001322
+- Benchmark problems for repository siting models
+  	- http://www.osti.gov/scitech/biblio/6614989
+	- Nuclear waste storage
+- An efficient variable neighborhood search heuristic for very large scale vehicle routing problems
+  	- http://www.sciencedirect.com/science/article/pii/S0305054805003394
+- A new evolutionary approach to cutting stock problems with and without contiguity
+  	- http://www.sciencedirect.com/science/article/pii/S0305054801000399
+- Nonnparametric input estimation in physiological systems: Problems, methods, and case studies
+	- http://www.sciencedirect.com/science/article/pii/S0005109896002543
+- A handbook of industrial ecology
+  	- http://evirtual.uaslp.mx/Ambiental/PyGAmbiental/Biblioteca/Handbook_Industrial_Ecology_2002.pdf#page=135
+	- 'Benzene production: a benchmark multi-objective example' (p.127)
+- Industrial and ecological cumulative exergy consumption of the United States via the 1997 input-output benchmark model
+- Competent genetic-evolutionary optimization of water distribution systems
+  	- http://ascelibrary.org/doi/abs/10.1061/(ASCE)0887-3801(2001)15:2(89)
+- The wrong paradigm: why water distribution optimization doesn't work
+  	- http://ascelibrary.org/doi/abs/10.1061/(ASCE)0733-9496(2001)127:4(203)
+- A modified shuffled from-leaping optimization algorithm: applications to project management
+  	- http://www.tandfonline.com/doi/full/10.1080/15732470500254535#abstract
+- Evolutionary multi-objective optimization of the design and operation of water distribution network: total cost vs. reliability vs. water quality
+	- http://www.iwaponline.com/jh/008/jh0080165.htm
+- Optimization of water distribution network design using differential evolution
+- Benchmark problems for design and optimisation of water distribution systems
+  	- https://books.google.com/books?hl=en&lr=&id=SCUT4QDVkJEC&oi=fnd&pg=PA249&dq=benchmark+problems+AND+water+management&ots=gGB3EhNLBD&sig=qV-J7mZdEturBGoZE9lJCVkrF2U#v=onepage&q=benchmark%20problems%20AND%20water%20management&f=false
 # Acknowledgements {.unnumbered}
 
 Tom Ravalde is supported by the EPSRC Doctoral Training Partnership at Imperial College London.
