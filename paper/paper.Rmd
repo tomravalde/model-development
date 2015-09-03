@@ -1,5 +1,5 @@
 ---
-title: Model development
+title: Optimising urban metabolism: a model formulation
 journal: "TBC"
 author:
 - name: 'Tom Ravalde\corref{cor1}'
@@ -29,6 +29,20 @@ font_import(pattern="LinBiolinum")
 ```
 
 # Introduction 
+
+In this chapter, we will formulate our model to optimise urban metabolism. We will compare how different mathematical formulations will meet the planning and decision making needs for fidelity, flexibility and ease of use.
+
+We will use a case study based on data for Tat Hamlet -- a village in Vietnam, and formulate a set of equations which can use the data to optimise the metabolism, e.g. by minimising emissions.
+
+Optimisation problems of this nature are rare in the literature, so need to be encouraged. We hope that 'Tat hamlet' will become a benchmark problem for researchers. That is to say that others can use the same problem definition and accompanying data for their own formulations, to try and improve on ours. We will therefore make our data [TODO: and code -- or are there IP issues surrounding this?] freely available on line.
+
+# Tat Hamlet
+
+The purpose of this study is to explain why we use our proposed formulation rather than another. It is therefore important that the case study is small enought
+
+We chose Tat because it is small enough to explain to present an overview of the data in a single paper [TODO: or chapter]. This also makes using our data to replicate or improve on our formulation, user-friendly.
+
+# Benchmarking
 
 - Concerned with the model formulation and validation
 
